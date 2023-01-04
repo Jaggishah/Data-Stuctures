@@ -84,9 +84,32 @@ class LinkedList:
 
             ele = ele.next
             count += 1 
-    
+    def insert_after_value(self,data_after,data_to_insert ):
+        if self.head == None :
+            raise Exception("Empty")
 
-    
+        ele = self.head
+
+        while ele:
+            if data_after == ele.data:
+                node = Node(data_to_insert,ele.next)
+                ele.next = node
+                return
+
+            ele = ele.next
+
+    def remove_by_value(self,data):
+        if self.head == None :
+            raise Exception("Empty")
+
+        ele = self.head
+
+        while ele:
+            if data == ele.next.data:
+                ele.next = ele.next.next
+                return
+
+            ele = ele.next
 if __name__ == '__main__':
     obj = LinkedList()
     obj.insert_at_begin(6)
@@ -95,5 +118,7 @@ if __name__ == '__main__':
     obj.insert_values(['jaggi','shah'])
     obj.get_length()
     obj.value_at_middle(3,2)
+    obj.insert_after_value('jaggi','chal_paya')
+    obj.remove_by_value(8)
     # obj.at_remove(2)
     obj.printt()
